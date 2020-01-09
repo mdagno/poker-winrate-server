@@ -7,7 +7,7 @@
 * Server Repo: https://github.com/mdagno/poker-winrate-server
 
 ##Author
-*Marlon Agno
+* Marlon Agno
 
 ##Getting Started
 * Clone the repository and install dependencies using ```npm install```

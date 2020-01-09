@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS poker_sessions;
+DROP TABLE IF EXISTS "poker_sessions";

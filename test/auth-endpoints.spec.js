@@ -25,15 +25,14 @@ describe('Authorization endpoints', () => {
   before('cleanup', () => helpers.cleanTables(db));
 
   afterEach('cleanup', () => helpers.cleanTables(db));
-
-  describe(`POST /api/auth/token`, () => {
-    beforeEach('insert users', () => 
-      helpers.seedUsers(
-        db,
-        testUsers,
-      )
+ 
+  beforeEach('insert users', () => 
+    helpers.seedUsers(
+      db,
+      testUsers,
     )
-
+  )
+  describe(`POST /api/auth/token`, () => {
     const requiredFields = ['username', 'password'];
 
     requiredFields.forEach(field => {
@@ -77,9 +76,7 @@ describe('Authorization endpoints', () => {
       username: testUser.username,
       password: testUser.password,
     };
-    
-    console.log(testUser.id)
-    console.log(userValidCreds)
+
     const expectedToken = jwt.sign(
       { user_id: 1 },
       process.env.JWT_SECRET,
@@ -89,7 +86,6 @@ describe('Authorization endpoints', () => {
       }
     );
 
-    console.log(expectedToken)
     return supertest(app)
       .post('/api/auth/token')
       .send(userValidCreds)

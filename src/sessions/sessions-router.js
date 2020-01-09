@@ -41,7 +41,8 @@ sessionsRouter.use(requireAuth)
           buy_in: session.buy_in,
           cashed_out: session.cashed_out,
           session_length: session.session_length,
-          notes: xss(session.notes)
+          notes: xss(session.notes),
+          user_id: session.user_id,
         })
     })
     .catch(next)
@@ -62,7 +63,8 @@ sessionsRouter
       buy_in: res.session.buy_in,
       cashed_out: res.session.cashed_out,
       session_length: res.session.session_length,
-      notes: xss(res.session.notes)
+      notes: xss(res.session.notes),
+      user_id: res.session.user_id,
     });
   })  
 
@@ -78,7 +80,6 @@ sessionsRouter
     .catch(next)
   })
   .patch(jsonParser, (req, res, next) => {
-    console.log('Test')
     const {game_type_one, small_blind, big_blind, buy_in, cashed_out, session_length, notes} = req.body;
     const sessionToUpdate = {game_type_one, small_blind, big_blind, buy_in, cashed_out, session_length, notes}
 
@@ -98,7 +99,8 @@ sessionsRouter
           buy_in: session.buy_in,
           cashed_out: session.cashed_out,
           session_length: session.session_length,
-          notes: xss(session.notes)
+          notes: xss(session.notes),
+          user_id: session.user_id,
         })
       })
       .catch(next)
@@ -110,7 +112,6 @@ async function checkSessionExists(req, res, next) {
       req.app.get('db'),
       req.params.session_id
     )
-    console.log(session)
     if (!session)
       return res.status(404).json({
         error: `Session doesn't exist`
@@ -119,7 +120,6 @@ async function checkSessionExists(req, res, next) {
     res.session = session;
     next()
   } catch (error) {
-    console.log(error)
     next(error)
   }
 }

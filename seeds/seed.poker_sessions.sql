@@ -1,6 +1,7 @@
-INSERT INTO "user"("username", "password", "email")
+INSERT INTO "user" (id, username, password, email)
 VALUES
     (
+        1,
         'admin',
         -- password = 'pass,
         '$2a$10$fCWkaGbt7ZErxaxclioLteLUgg4Q3Rp09WW0s/wSLxDKYsaGYUpjG',
@@ -8,7 +9,7 @@ VALUES
     );
 
 
-INSERT INTO poker_sessions (game_type_one, game_type_two, small_blind, big_blind, buy_in, cashed_out, session_length, notes, user_id)
+INSERT INTO "poker_sessions" (game_type_one, game_type_two, small_blind, big_blind, buy_in, cashed_out, session_length, notes, user_id)
 VALUES
 ('Live', 'Cash', 2, 5, 500, 721, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1),
 ('Live', 'Cash', 5, 10, 1000, 648, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1),
@@ -32,3 +33,4 @@ VALUES
 ('Online', 'Cash', 1, 2, 200, 211, 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1);
 
 
+SELECT setval('user_id_seq', (SELECT MAX(id) from "user"));

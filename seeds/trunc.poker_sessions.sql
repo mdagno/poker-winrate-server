@@ -1,3 +1,3 @@
 TRUNCATE
-  poker_sessions
+  "poker_sessions"
   RESTART IDENTITY CASCADE;
